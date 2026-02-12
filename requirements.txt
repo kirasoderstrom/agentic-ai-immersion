@@ -384,6 +384,10 @@ opentelemetry-instrumentation-wsgi==0.60b0
     # via
     #   opentelemetry-instrumentation-django
     #   opentelemetry-instrumentation-flask
+opentelemetry-instrumentation-httpx>=0.60b0
+    # via -r requirements.in
+opentelemetry-instrumentation-openai-v2>=2.0b0
+    # via -r requirements.in
 opentelemetry-proto==1.39.0
     # via
     #   opentelemetry-exporter-otlp-proto-common

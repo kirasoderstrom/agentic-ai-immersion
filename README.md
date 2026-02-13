@@ -172,12 +172,12 @@ For detailed setup instructions, see [Microsoft Foundry Documentation](https://l
 
 ### Step 5: Required Azure RBAC Roles
 
-Assign the following roles to your user identity on the AI Foundry Project resource:
+Assign the following role to your user identity on the AI Foundry resource:
 
-| Role | Resource | Purpose |
-|------|----------|---------|
-| **Azure AI Developer** | AI Foundry Project | Create and manage agents, threads, and runs |
-| **Cognitive Services OpenAI User** | AI Foundry Project | Access OpenAI model deployments |
+| Role | Resource | Purpose | Notebooks |
+|------|----------|---------|-----------|
+| **Azure AI User** | AI Services / Foundry Resource | Access models, agents, evaluations, and all Foundry V2 capabilities | All |
+| **Monitoring Metrics Publisher** *(optional)* | Application Insights Resource | Required only if you enable Entra ID-based telemetry ingestion (see notebook 1, commented-out `credential` parameter) | 1 |
 
 #### Role Assignment Commands
 
@@ -185,12 +185,15 @@ Assign the following roles to your user identity on the AI Foundry Project resou
 # Get your user principal ID
 $USER_PRINCIPAL_ID = (az ad signed-in-user show --query id -o tsv)
 
-# Get project scope (replace with your values)
-$PROJECT_SCOPE = "/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.MachineLearningServices/workspaces/<project>"
+# Get resource scope (replace with your values)
+$RESOURCE_SCOPE = "/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.CognitiveServices/accounts/<your-foundry-resource>"
 
-# Core roles (required for all notebooks)
-az role assignment create --role "Azure AI Developer" --assignee $USER_PRINCIPAL_ID --scope $PROJECT_SCOPE
-az role assignment create --role "Cognitive Services OpenAI User" --assignee $USER_PRINCIPAL_ID --scope $PROJECT_SCOPE
+# Required for all notebooks
+az role assignment create --role "Azure AI User" --assignee $USER_PRINCIPAL_ID --scope $RESOURCE_SCOPE
+
+# OPTIONAL: Only needed if you enable Entra ID auth for Application Insights in notebook 1
+# $APP_INSIGHTS_SCOPE = "/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.Insights/components/<your-app-insights>"
+# az role assignment create --role "Monitoring Metrics Publisher" --assignee $USER_PRINCIPAL_ID --scope $APP_INSIGHTS_SCOPE
 ```
 
 > **⚠️ Note:** Role assignments can take **5-10 minutes** to propagate. If you encounter permission errors, wait and retry.

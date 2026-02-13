@@ -4,14 +4,10 @@
 #
 #    pip-compile --allow-unsafe --output-file=requirements.txt --strip-extras requirements.in
 #
-agent-framework-azure-ai==1.0.0b260116
+agent-framework-azure-ai==1.0.0b260212
     # via -r requirements.in
-agent-framework-core==1.0.0b260116
-    # via
-    #   agent-framework-azure-ai
-    #   agent-framework-redis
-agent-framework-redis==1.0.0b260116
-    # via -r requirements.in
+agent-framework-core==1.0.0b260212
+    # via agent-framework-azure-ai
 aiohappyeyeballs==2.6.1
     # via aiohttp
 aiohttp==3.13.3
@@ -30,13 +26,15 @@ anyio==4.12.1
     #   openai
     #   sse-starlette
     #   starlette
+appnope==0.1.4
+    # via ipykernel
 argon2-cffi==25.1.0
     # via jupyter-server
 argon2-cffi-bindings==25.1.0
     # via argon2-cffi
 arrow==1.4.0
     # via isoduration
-asgiref==3.11.0
+asgiref==3.11.1
     # via opentelemetry-instrumentation-asgi
 asttokens==3.0.1
     # via stack-data
@@ -52,41 +50,33 @@ azure-ai-agents==1.2.0b5
 azure-ai-projects==2.0.0b3
     # via
     #   -r requirements.in
-    #   agent-framework-azure-ai
-azure-common==1.1.28
-    # via azure-search-documents
-azure-core==1.38.0
+    #   agent-framework-core
+azure-core==1.38.1
     # via
     #   -r requirements.in
     #   azure-ai-agents
     #   azure-ai-projects
     #   azure-core-tracing-opentelemetry
     #   azure-identity
-    #   azure-mgmt-core
     #   azure-monitor-opentelemetry
     #   azure-monitor-opentelemetry-exporter
-    #   azure-search-documents
     #   azure-storage-blob
     #   msrest
 azure-core-tracing-opentelemetry==1.0.0b12
     # via azure-monitor-opentelemetry
-azure-identity==1.25.1
+azure-identity==1.25.2
     # via
     #   -r requirements.in
     #   agent-framework-core
     #   azure-ai-projects
     #   azure-monitor-opentelemetry-exporter
-azure-mgmt-core==1.6.0
+azure-monitor-opentelemetry==1.8.6
     # via -r requirements.in
-azure-monitor-opentelemetry==1.8.4
-    # via -r requirements.in
-azure-monitor-opentelemetry-exporter==1.0.0b46
+azure-monitor-opentelemetry-exporter==1.0.0b48
     # via azure-monitor-opentelemetry
-azure-search-documents==11.7.0b2
-    # via -r requirements.in
 azure-storage-blob==12.28.0
     # via azure-ai-projects
-babel==2.17.0
+babel==2.18.0
     # via jupyterlab-server
 beautifulsoup4==4.14.3
     # via nbconvert
@@ -106,22 +96,17 @@ charset-normalizer==3.4.4
     # via requests
 click==8.3.1
     # via uvicorn
-colorama==0.4.6
-    # via
-    #   click
-    #   ipython
-    #   tqdm
 comm==0.2.3
     # via
     #   ipykernel
     #   ipywidgets
-cryptography==46.0.3
+cryptography==46.0.5
     # via
     #   azure-identity
     #   azure-storage-blob
     #   msal
     #   pyjwt
-debugpy==1.8.19
+debugpy==1.8.20
     # via ipykernel
 decorator==5.2.1
     # via ipython
@@ -143,7 +128,7 @@ googleapis-common-protos==1.72.0
     # via
     #   opentelemetry-exporter-otlp-proto-grpc
     #   opentelemetry-exporter-otlp-proto-http
-grpcio==1.76.0
+grpcio==1.78.0
     # via opentelemetry-exporter-otlp-proto-grpc
 h11==0.16.0
     # via
@@ -167,13 +152,13 @@ idna==3.11
     #   yarl
 importlib-metadata==8.7.1
     # via opentelemetry-api
-ipykernel==7.1.0
+ipykernel==7.2.0
     # via
     #   -r requirements.in
     #   jupyter
     #   jupyter-console
     #   jupyterlab
-ipython==9.9.0
+ipython==9.10.0
     # via
     #   ipykernel
     #   ipywidgets
@@ -186,7 +171,6 @@ isodate==0.7.2
     # via
     #   azure-ai-agents
     #   azure-ai-projects
-    #   azure-search-documents
     #   azure-storage-blob
     #   msrest
 isoduration==20.11.0
@@ -199,12 +183,10 @@ jinja2==3.1.6
     #   jupyterlab
     #   jupyterlab-server
     #   nbconvert
-jiter==0.12.0
+jiter==0.13.0
     # via openai
 json5==0.13.0
     # via jupyterlab-server
-jsonpath-ng==1.7.0
-    # via redisvl
 jsonpointer==3.0.0
     # via jsonschema
 jsonschema==4.26.0
@@ -248,7 +230,7 @@ jupyter-server==2.17.0
     #   notebook-shim
 jupyter-server-terminals==0.5.4
     # via jupyter-server
-jupyterlab==4.5.2
+jupyterlab==4.5.4
     # via
     #   jupyter
     #   notebook
@@ -270,12 +252,10 @@ matplotlib-inline==0.2.1
     # via
     #   ipykernel
     #   ipython
-mcp==1.25.0
+mcp==1.26.0
     # via agent-framework-core
 mistune==3.2.0
     # via nbconvert
-ml-dtypes==0.5.4
-    # via redisvl
 msal==1.34.0
     # via
     #   azure-identity
@@ -284,13 +264,13 @@ msal-extensions==1.3.1
     # via azure-identity
 msrest==0.7.1
     # via azure-monitor-opentelemetry-exporter
-multidict==6.7.0
+multidict==6.7.1
     # via
     #   aiohttp
     #   yarl
 nbclient==0.10.4
     # via nbconvert
-nbconvert==7.16.6
+nbconvert==7.17.0
     # via
     #   jupyter
     #   jupyter-server
@@ -301,27 +281,21 @@ nbformat==5.10.4
     #   nbconvert
 nest-asyncio==1.6.0
     # via ipykernel
-notebook==7.5.2
+notebook==7.5.3
     # via jupyter
 notebook-shim==0.2.4
     # via
     #   jupyterlab
     #   notebook
-numpy==2.4.1
-    # via
-    #   agent-framework-redis
-    #   ml-dtypes
-    #   redisvl
 oauthlib==3.3.1
     # via requests-oauthlib
-openai==2.15.0
+openai==2.20.0
     # via
     #   -r requirements.in
     #   agent-framework-core
     #   azure-ai-projects
 opentelemetry-api==1.39.0
     # via
-    #   -r requirements.in
     #   agent-framework-core
     #   azure-core-tracing-opentelemetry
     #   azure-monitor-opentelemetry-exporter
@@ -333,6 +307,8 @@ opentelemetry-api==1.39.0
     #   opentelemetry-instrumentation-django
     #   opentelemetry-instrumentation-fastapi
     #   opentelemetry-instrumentation-flask
+    #   opentelemetry-instrumentation-httpx
+    #   opentelemetry-instrumentation-openai-v2
     #   opentelemetry-instrumentation-psycopg2
     #   opentelemetry-instrumentation-requests
     #   opentelemetry-instrumentation-urllib
@@ -357,6 +333,8 @@ opentelemetry-instrumentation==0.60b0
     #   opentelemetry-instrumentation-django
     #   opentelemetry-instrumentation-fastapi
     #   opentelemetry-instrumentation-flask
+    #   opentelemetry-instrumentation-httpx
+    #   opentelemetry-instrumentation-openai-v2
     #   opentelemetry-instrumentation-psycopg2
     #   opentelemetry-instrumentation-requests
     #   opentelemetry-instrumentation-urllib
@@ -372,6 +350,10 @@ opentelemetry-instrumentation-fastapi==0.60b0
     # via azure-monitor-opentelemetry
 opentelemetry-instrumentation-flask==0.60b0
     # via azure-monitor-opentelemetry
+opentelemetry-instrumentation-httpx==0.60b0
+    # via -r requirements.in
+opentelemetry-instrumentation-openai-v2==2.3b0
+    # via -r requirements.in
 opentelemetry-instrumentation-psycopg2==0.60b0
     # via azure-monitor-opentelemetry
 opentelemetry-instrumentation-requests==0.60b0
@@ -384,10 +366,6 @@ opentelemetry-instrumentation-wsgi==0.60b0
     # via
     #   opentelemetry-instrumentation-django
     #   opentelemetry-instrumentation-flask
-opentelemetry-instrumentation-httpx>=0.60b0
-    # via -r requirements.in
-opentelemetry-instrumentation-openai-v2>=2.0b0
-    # via -r requirements.in
 opentelemetry-proto==1.39.0
     # via
     #   opentelemetry-exporter-otlp-proto-common
@@ -397,7 +375,6 @@ opentelemetry-resource-detector-azure==0.1.5
     # via azure-monitor-opentelemetry
 opentelemetry-sdk==1.39.0
     # via
-    #   -r requirements.in
     #   agent-framework-core
     #   azure-monitor-opentelemetry
     #   azure-monitor-opentelemetry-exporter
@@ -412,6 +389,8 @@ opentelemetry-semantic-conventions==0.60b0
     #   opentelemetry-instrumentation-django
     #   opentelemetry-instrumentation-fastapi
     #   opentelemetry-instrumentation-flask
+    #   opentelemetry-instrumentation-httpx
+    #   opentelemetry-instrumentation-openai-v2
     #   opentelemetry-instrumentation-requests
     #   opentelemetry-instrumentation-urllib
     #   opentelemetry-instrumentation-urllib3
@@ -425,11 +404,12 @@ opentelemetry-util-http==0.60b0
     #   opentelemetry-instrumentation-django
     #   opentelemetry-instrumentation-fastapi
     #   opentelemetry-instrumentation-flask
+    #   opentelemetry-instrumentation-httpx
     #   opentelemetry-instrumentation-requests
     #   opentelemetry-instrumentation-urllib
     #   opentelemetry-instrumentation-urllib3
     #   opentelemetry-instrumentation-wsgi
-packaging==25.0
+packaging==26.0
     # via
     #   agent-framework-core
     #   ipykernel
@@ -442,12 +422,12 @@ packaging==25.0
     #   opentelemetry-instrumentation-flask
 pandocfilters==1.5.1
     # via nbconvert
-parso==0.8.5
+parso==0.8.6
     # via jedi
-platformdirs==4.5.1
+pexpect==4.9.0
+    # via ipython
+platformdirs==4.7.1
     # via jupyter-core
-ply==3.11
-    # via jsonpath-ng
 prometheus-client==0.24.1
     # via jupyter-server
 prompt-toolkit==3.0.52
@@ -458,17 +438,21 @@ propcache==0.4.1
     # via
     #   aiohttp
     #   yarl
-protobuf==6.33.4
+protobuf==6.33.5
     # via
     #   googleapis-common-protos
     #   opentelemetry-proto
-psutil==7.2.1
+psutil==7.2.2
     # via
     #   azure-monitor-opentelemetry-exporter
     #   ipykernel
+ptyprocess==0.7.0
+    # via
+    #   pexpect
+    #   terminado
 pure-eval==0.2.3
     # via stack-data
-pycparser==2.23
+pycparser==3.0
     # via cffi
 pydantic==2.12.5
     # via
@@ -477,24 +461,20 @@ pydantic==2.12.5
     #   mcp
     #   openai
     #   pydantic-settings
-    #   redisvl
 pydantic-core==2.41.5
     # via pydantic
 pydantic-settings==2.12.0
-    # via
-    #   agent-framework-core
-    #   mcp
+    # via mcp
 pygments==2.19.2
     # via
     #   ipython
     #   ipython-pygments-lexers
     #   jupyter-console
     #   nbconvert
-pyjwt==2.10.1
+pyjwt==2.11.0
     # via
     #   mcp
     #   msal
-    #   pyjwt
 python-dateutil==2.9.0.post0
     # via
     #   arrow
@@ -502,36 +482,20 @@ python-dateutil==2.9.0.post0
 python-dotenv==1.2.1
     # via
     #   -r requirements.in
+    #   agent-framework-core
     #   pydantic-settings
 python-json-logger==4.0.0
     # via jupyter-events
-python-multipart==0.0.21
+python-multipart==0.0.22
     # via mcp
-python-ulid==3.1.0
-    # via redisvl
-pywin32==311 ; sys_platform == 'win32'
-    # via mcp
-pywinpty==3.0.2 ; sys_platform == 'win32'
-    # via
-    #   jupyter-server
-    #   jupyter-server-terminals
-    #   terminado
 pyyaml==6.0.3
-    # via
-    #   jupyter-events
-    #   redisvl
+    # via jupyter-events
 pyzmq==27.1.0
     # via
     #   ipykernel
     #   jupyter-client
     #   jupyter-console
     #   jupyter-server
-redis==7.1.0
-    # via
-    #   agent-framework-redis
-    #   redisvl
-redisvl==0.13.2
-    # via agent-framework-redis
 referencing==0.37.0
     # via
     #   jsonschema
@@ -570,7 +534,7 @@ six==1.17.0
     #   rfc3339-validator
 sniffio==1.3.1
     # via openai
-soupsieve==2.8.2
+soupsieve==2.8.3
     # via beautifulsoup4
 sse-starlette==3.2.0
     # via mcp
@@ -580,8 +544,6 @@ starlette==0.52.1
     # via
     #   mcp
     #   sse-starlette
-tenacity==9.1.2
-    # via redisvl
 terminado==0.18.1
     # via
     #   jupyter-server
@@ -596,7 +558,7 @@ tornado==6.5.4
     #   jupyterlab
     #   notebook
     #   terminado
-tqdm==4.67.1
+tqdm==4.67.3
     # via openai
 traitlets==5.14.3
     # via
@@ -621,7 +583,6 @@ typing-extensions==4.15.0
     #   azure-ai-agents
     #   azure-core
     #   azure-identity
-    #   azure-search-documents
     #   azure-storage-blob
     #   beautifulsoup4
     #   grpcio
@@ -650,7 +611,7 @@ urllib3==2.6.3
     # via requests
 uvicorn==0.40.0
     # via mcp
-wcwidth==0.2.14
+wcwidth==0.6.0
     # via prompt-toolkit
 webcolors==25.10.0
     # via jsonschema
@@ -668,6 +629,7 @@ wrapt==1.17.3
     # via
     #   opentelemetry-instrumentation
     #   opentelemetry-instrumentation-dbapi
+    #   opentelemetry-instrumentation-httpx
     #   opentelemetry-instrumentation-urllib3
 yarl==1.22.0
     # via aiohttp
@@ -675,5 +637,5 @@ zipp==3.23.0
     # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
-setuptools==80.9.0
+setuptools==82.0.0
     # via jupyterlab

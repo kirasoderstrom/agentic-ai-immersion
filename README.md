@@ -103,7 +103,7 @@ observability-and-evaluations/
 
 ```powershell
 # Clone the repository
-git clone https://github.com/dhangerkapil/agentic-ai-immersion.git
+git clone -b fsi-workshop https://github.com/kirasoderstrom/agentic-ai-immersion.git
 cd agentic-ai-immersion
 
 # Verify Python version
@@ -112,10 +112,21 @@ python --version  # Python 3.10+ required
 
 ### Step 2: Environment Setup
 
+**Windows (PowerShell):**
 ```powershell
 # Create and activate virtual environment
 python -m venv .venv
 .\.venv\Scripts\activate
+
+# Install dependencies (versions are pinned for consistency)
+pip install -r requirements.txt
+```
+
+**macOS/Linux (Bash):**
+```bash
+# Create and activate virtual environment
+python -m venv .venv
+source .venv/bin/activate
 
 # Install dependencies (versions are pinned for consistency)
 pip install -r requirements.txt
@@ -181,9 +192,10 @@ Assign the following role to your user identity on the AI Foundry resource:
 
 #### Role Assignment Commands
 
+**Windows (PowerShell):**
 ```powershell
 # Get your user principal ID
-$USER_PRINCIPAL_ID = (az ad signed-in-user show --query id -o tsv)
+$USER_PRINCIPAL_ID=(az ad signed-in-user show --query id -o tsv)
 
 # Get resource scope (replace with your values)
 $RESOURCE_SCOPE = "/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.CognitiveServices/accounts/<your-foundry-resource>"
@@ -193,6 +205,22 @@ az role assignment create --role "Azure AI User" --assignee $USER_PRINCIPAL_ID -
 
 # OPTIONAL: Only needed if you enable Entra ID auth for Application Insights in notebook 1
 # $APP_INSIGHTS_SCOPE = "/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.Insights/components/<your-app-insights>"
+# az role assignment create --role "Monitoring Metrics Publisher" --assignee $USER_PRINCIPAL_ID --scope $APP_INSIGHTS_SCOPE
+```
+
+**macOS/Linux (Bash):**
+```bash
+# Get your user principal ID
+USER_PRINCIPAL_ID=$(az ad signed-in-user show --query id -o tsv)
+
+# Get resource scope (replace with your values)
+RESOURCE_SCOPE="/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.CognitiveServices/accounts/<your-foundry-resource>"
+
+# Required for all notebooks
+az role assignment create --role "Azure AI User" --assignee $USER_PRINCIPAL_ID --scope $RESOURCE_SCOPE
+
+# OPTIONAL: Only needed if you enable Entra ID auth for Application Insights in notebook 1
+# APP_INSIGHTS_SCOPE="/subscriptions/<sub-id>/resourceGroups/<rg>/providers/Microsoft.Insights/components/<your-app-insights>"
 # az role assignment create --role "Monitoring Metrics Publisher" --assignee $USER_PRINCIPAL_ID --scope $APP_INSIGHTS_SCOPE
 ```
 
